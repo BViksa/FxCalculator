@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="title">
+      FX Calculator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Converter
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Base</ion-label>
+                  <ion-input type="number" [(ngModel)]="baseValue" (keyup)="convertDestination()">
+                  </ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                  <select [ngModel]="baseCurrency" (ngModelChange)="onChangeBaseCurrency($event)">
+                    <option *ngFor="let currency of baseCurrencyList" [ngValue]="currency">{{currency.name}}</option>
+                  </select>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Destination</ion-label>
+                  <ion-input type="number" [(ngModel)]="destinationValue"
+                    (keyup)="convertBase()"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                  <select [ngModel]="destinationCurrency" (ngModelChange)="onChangeDestinationCurrency($event)">
+                    <option *ngFor="let currency of destinationCurrencyList" [ngValue]="currency">{{currency.name}}
+                    </option>
+                  </select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
