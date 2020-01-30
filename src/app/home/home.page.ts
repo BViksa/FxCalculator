@@ -39,6 +39,7 @@ export class HomePage implements OnInit {
     this.currencyService.getRates(base).subscribe(data => {
       this.destinationCurrencyList = this.filterCurrencies(data);
       this.destinationCurrency = this.destinationCurrencyList[0];
+      this.convertDestination();
     },
       error => console.log('An error occurred', error));
   }
@@ -46,7 +47,6 @@ export class HomePage implements OnInit {
   onChangeBaseCurrency(selectedCurrency: Currency) {
     this.baseCurrency = selectedCurrency;
     this.getRates(this.baseCurrency.name);
-    this.convertDestination();
   }
 
   onChangeDestinationCurrency(selectedCurrency: Currency) {
